@@ -70,10 +70,18 @@ public class Request {
         this.endpoint = endpoint.replaceAll(".$", "");
     }
 
+    /**
+     * Guarda si es archivo ono
+     * @param isFile boolean.
+     */
     public void setFile(boolean isFile) {
         this.isFile = isFile;
     }
 
+    /**
+     * Para saber si es archivo o no.
+     * @return boolean.
+     */
     public boolean isFile() {
         return isFile;
     }
