@@ -1,12 +1,14 @@
 package org.example.files;
 
 import java.io.*;
+import java.net.Socket;
 import java.net.URI;
+import java.util.Scanner;
 
 /***
  * Clase que se encarga de leer el archivo y devolver el resultado al cliente.
  */
-public abstract class FileHandler {
+public abstract class File {
 
     /***
      * Leerá el archivo correspondiente y lo enviará al cliente por el socket dado.

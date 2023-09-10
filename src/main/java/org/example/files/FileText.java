@@ -1,12 +1,12 @@
 package org.example.files;
 
-import java.io.*;
+import java.io.IOException;
 import java.net.URI;
 import java.util.Scanner;
 /***
  * Clase qu se encarga de leer los archivos texto y enviarlos al cliente.
  */
-public class FileHandlerText extends FileHandler {
+public class FileText extends File {
 
 
     /***
@@ -15,7 +15,7 @@ public class FileHandlerText extends FileHandler {
      * @throws IOException En caso de que no se pueda escribir o leer el socket.
      */
     public byte[] readFile(URI path) throws IOException {
-        File file = new File(path.getPath());
+        java.io.File file = new java.io.File(path.getPath());
         StringBuilder outputLine = new StringBuilder();
         if (file.exists()) {
             Scanner line = new Scanner(file);

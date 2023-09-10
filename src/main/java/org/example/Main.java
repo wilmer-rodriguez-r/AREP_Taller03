@@ -18,11 +18,11 @@ import java.util.*;
  */
 public class Main {
 
+    public static Map<String, Method> servicios = new HashMap<>();
 
     /***
      * Función que ejecuta el servidor http y el backend en sus respectivos puertos.
      * @param args un String[] donde puede recibir parámetros
-     * @throws ClassNotFoundException cuando la clase no se encuentra.
      */
     public static void main(String[] args) throws ClassNotFoundException {
         List<Class<?>> classes = LoadComponents.getClasses(args[0]);
@@ -30,12 +30,9 @@ public class Main {
         loadServers();
     }
 
-    /**
-     * Sube los servers correspondientes.
-     */
     public static void loadServers() {
         MovieController.getInstance();
-        MiniSpringServer springServer = new MiniSpringServer(30000);
+        MiniSpringServer springServer = new MiniSpringServer(35001);
         SocketServer backServer = new SocketServer(35000);
         backServer.start();
         springServer.start();

@@ -10,21 +10,11 @@ import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-/**
- * Clase del server minispring.
- */
 public class MiniSpringServer extends Thread {
 
     private final int port;
-    /**
-     * Path con la ubicación de los archivos.
-     */
     public static final String path = "./target/classes/public";
 
-    /**
-     * Constructor de la clase.
-     * @param port int del puerto por el que corre el servidor.
-     */
     public MiniSpringServer(int port) {
         this.port = port;
     }
@@ -54,13 +44,6 @@ public class MiniSpringServer extends Thread {
         }
     }
 
-    /**
-     * Obtiene el contenido de la petición realizada por el cliente.
-     * @param in BufferedReader que se encargara de leer el contenido de la petición
-     * @return byte[] será el contenido de la respuesta que se le enviara al cliente.
-     * @throws IOException Cuando no se pueda leer la petición.
-     * @throws ExceptionFile Cuando el archivo no se encuentre.
-     */
     public byte[] getRequest(BufferedReader in) throws IOException, ExceptionFile {
         StringBuilder headers = new StringBuilder();
         String headerLine;
@@ -75,11 +58,10 @@ public class MiniSpringServer extends Thread {
     }
 
     /**
-     * Ejecuta el método asociado al endpoint solicitado.
+     * Ejecuta la función lambda asociada al endpoint solicitado.
      * @param headers String es el encabezado de la petición.
      * @param payload String es el body de la petición.
      * @return byte[] Corresponde a la respuesta de la petición.
-     * @throws ExceptionFile cuando no se encuentra el archivo.
      */
     public byte[] executeMethod(String headers, String payload) throws ExceptionFile {
         try {
