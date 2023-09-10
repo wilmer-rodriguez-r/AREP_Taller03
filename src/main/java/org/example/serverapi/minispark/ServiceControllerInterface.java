@@ -1,8 +1,8 @@
-package org.example.miniSpark;
+package org.example.serverapi.minispark;
 
-import org.example.files.exception.ExceptionFile;
-import org.example.handlers.Request;
-import org.example.handlers.Response;
+import org.example.serverapi.files.exception.ExceptionFile;
+import org.example.serverapi.minispark.handlers.Request;
+import org.example.serverapi.minispark.handlers.Response;
 
 /**
  * Functional Interface para Spark

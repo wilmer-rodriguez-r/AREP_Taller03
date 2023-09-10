@@ -1,8 +1,6 @@
-package org.example.handlers;
+package org.example.serverapi.minispark.handlers;
 
 import org.json.JSONObject;
-
-import javax.management.Query;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 
@@ -12,10 +10,9 @@ import java.util.LinkedHashMap;
 public class Request {
 
     private HashMap<String, String> params = new LinkedHashMap<>();
-    private String endpoint;
+    private String query;
     private String body;
     private String verb;
-    private boolean isFile;
 
     /**
      * Constructor de la clase
@@ -27,7 +24,7 @@ public class Request {
         System.out.println(args);
         setVerb(args);
         setParams(args);
-        setEndpointAndQuery(args);
+        setQuery(args);
         setBody(payload);
     }
 
@@ -59,23 +56,15 @@ public class Request {
      * Guarda el query del endpoint que solicita la petición del cliente.
      * @param args String que contiene el query.
      */
-    private void setEndpointAndQuery(String args) {
+    private void setQuery(String args) {
         String path = args.split(" ")[1];
-        String endpoint = path.split("\\?")[0] + "?";
+        String query = path.split("\\?")[0] + "?";
         if(!params.isEmpty()) {
             for (String param: params.keySet()) {
-                endpoint += "{"+param+"}&";
+                query += "{"+param+"}&";
             }
         }
-        this.endpoint = endpoint.replaceAll(".$", "");
-    }
-
-    public void setFile(boolean isFile) {
-        this.isFile = isFile;
-    }
-
-    public boolean isFile() {
-        return isFile;
+        this.query = query.replaceAll(".$", "");
     }
 
     /**
@@ -90,8 +79,8 @@ public class Request {
      * Obtiene el query
      * @return String que es el query de la petición
      */
-    public String getEndpoint() {
-        return endpoint;
+    public String getQuery() {
+        return query;
     }
 
     /**
@@ -115,8 +104,8 @@ public class Request {
      * Obtiene el body de la petición.
      * @return JSONObject el body respectivo.
      */
-    public String getBody() {
-        return body;
+    public JSONObject getBody() {
+        return new JSONObject(body);
     }
 
     /**

@@ -1,7 +1,7 @@
-package org.example.files.filesFactory;
+package org.example.serverapi.files.filesFactory;
 
-import org.example.files.File;
-import org.example.files.exception.ExceptionFile;
+import org.example.serverapi.files.File;
+import org.example.serverapi.files.exception.ExceptionFile;
 
 /***
  * Interfaz de la fabrica
